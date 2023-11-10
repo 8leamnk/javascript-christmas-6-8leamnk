@@ -8,9 +8,7 @@ class App {
     OutputView.printIntro();
 
     const date = await this.#executeDate();
-    const { menu, orderHistory } = await this.#executeMenu();
-
-    OutputView.printMenu(orderHistory);
+    const menu = await this.#executeMenu();
   }
 
   async #executeDate() {
@@ -33,9 +31,10 @@ class App {
       const menuInput = await InputView.readMenu();
       const menuObject = new Menu();
       const menu = menuObject.validate(menuInput);
-      const orderHistory = menuObject.arrangeOrderHistory();
 
-      return { menu, orderHistory };
+      OutputView.printMenu(menuObject.arrangeOrderHistory());
+
+      return menu;
     } catch (error) {
       OutputView.printError(error);
       return this.#executeMenu();

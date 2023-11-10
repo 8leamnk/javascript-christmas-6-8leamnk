@@ -33,7 +33,7 @@ class App {
       const menuInput = await InputView.readMenu();
       const menuObject = new Menu();
       const menu = menuObject.validate(menuInput);
-      const orderHistory = menuObject.getOrderHistory();
+      const orderHistory = menuObject.arrangeOrderHistory();
 
       return { menu, orderHistory };
     } catch (error) {

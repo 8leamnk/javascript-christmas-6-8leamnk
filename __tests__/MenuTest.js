@@ -31,7 +31,7 @@ describe('메뉴 클래스 테스트', () => {
     // when
     const menuObject = new Menu();
     menuObject.validate(INPUT);
-    const orderHistory = menuObject.getOrderHistory();
+    const orderHistory = menuObject.arrangeOrderHistory();
 
     // then
     expect(orderHistory).toEqual(OUTPUT);

@@ -9,7 +9,7 @@ class Menu {
     this.#menu = new Map();
   }
 
-  getOrderHistory() {
+  arrangeOrderHistory() {
     const orderHistory = [];
 
     this.#menu.forEach((value, key) => {

@@ -27,12 +27,20 @@ const VALUE = {
     },
   },
 
+  gift: {
+    detail: '샴페인 1개',
+    condition: 120000,
+  },
+
   unit: {
     number: '개',
+    won: '원',
   },
 };
 
 Object.freeze(VALUE.menu);
+Object.freeze(VALUE.gift);
+Object.freeze(VALUE.unit);
 Object.freeze(VALUE);
 
 export default VALUE;

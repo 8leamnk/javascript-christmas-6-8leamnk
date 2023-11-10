@@ -1,3 +1,5 @@
+import VALUE from './constants/value.js';
+
 class Total {
   #total;
 
@@ -14,6 +16,17 @@ class Total {
     this.#total = totalOrderAmount;
 
     return totalOrderAmount;
+  }
+
+  calculateGift() {
+    let gift = 0;
+    const type = VALUE.gift.detail.split(' ').at(0);
+
+    if (this.#total >= VALUE.gift.condition) {
+      gift += VALUE.menu.drink.get(type);
+    }
+
+    return gift;
   }
 }
 

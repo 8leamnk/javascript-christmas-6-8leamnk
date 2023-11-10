@@ -36,25 +36,25 @@ class Menu {
     const [menu, numberString] = menuAndNumber.split('-');
     const number = Number(numberString);
 
-    this.#validateFormat(menuAndNumber);
-    this.#validateNotExistMenu(menu, allMenuNames);
-    this.#validateNumberOfMenus(number);
+    Menu.#validateFormat(menuAndNumber);
+    Menu.#validateNotExistMenu(menu, allMenuNames);
+    Menu.#validateNumberOfMenus(number);
     this.#validateDuplication(menu, number);
   }
 
-  #validateFormat(menuAndNumber) {
+  static #validateFormat(menuAndNumber) {
     if (!VALUE.menu.format.test(menuAndNumber)) {
       throw new Error(MESSAGE.error.menu);
     }
   }
 
-  #validateNotExistMenu(menu, allMenuNames) {
+  static #validateNotExistMenu(menu, allMenuNames) {
     if (!allMenuNames.includes(menu)) {
       throw new Error(MESSAGE.error.menu);
     }
   }
 
-  #validateNumberOfMenus(number) {
+  static #validateNumberOfMenus(number) {
     if (number < VALUE.menu.range.min) {
       throw new Error(MESSAGE.error.menu);
     }

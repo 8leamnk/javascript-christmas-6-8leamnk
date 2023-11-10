@@ -1,3 +1,4 @@
+import getAllMenus from './utils/menuUtils.js';
 import VALUE from './constants/value.js';
 
 class Total {
@@ -8,14 +9,13 @@ class Total {
   }
 
   calculateTotal(menu) {
-    const totalOrderAmount = [...menu.values()].reduce(
-      (acc, amount) => acc + amount,
-      0,
-    );
+    const allMenus = getAllMenus();
 
-    this.#total = totalOrderAmount;
+    menu.forEach((value, key) => {
+      this.#total += allMenus.get(key) * value;
+    });
 
-    return totalOrderAmount;
+    return this.#total;
   }
 
   calculateGift() {

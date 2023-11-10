@@ -26,6 +26,10 @@ const VALUE = {
       max: 19,
     },
   },
+
+  unit: {
+    number: '개',
+  },
 };
 
 Object.freeze(VALUE.menu);

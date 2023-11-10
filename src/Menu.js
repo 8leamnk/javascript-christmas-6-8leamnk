@@ -9,6 +9,16 @@ class Menu {
     this.#menu = new Map();
   }
 
+  getOrderHistory() {
+    const orderHistory = [];
+
+    this.#menu.forEach((value, key) => {
+      orderHistory.push(`${key} ${value}${VALUE.unit.number}\n`);
+    });
+
+    return orderHistory.join('');
+  }
+
   validate(input) {
     const allMenuNames = [...getAllMenus().keys()];
 
@@ -65,7 +75,7 @@ class Menu {
     );
 
     if (isOnlyDrink) {
-      throw new Error(MESSAGE.error.menu);
+      throw new Error(MESSAGE.error.onlyDrink);
     }
   }
 
@@ -76,7 +86,7 @@ class Menu {
     );
 
     if (count > VALUE.menu.range.max) {
-      throw new Error(MESSAGE.error.menu);
+      throw new Error(MESSAGE.error.maxMenu);
     }
   }
 }

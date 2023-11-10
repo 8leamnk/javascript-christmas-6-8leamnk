@@ -10,9 +10,9 @@ const OutputView = {
     Console.print(MESSAGE.output.intro);
   },
 
-  printMenu() {
-    Console.print('<주문 메뉴>');
-    // ...
+  printMenu(orderHistory) {
+    Console.print(MESSAGE.input.menu);
+    Console.print(orderHistory);
   },
   // ...
 };

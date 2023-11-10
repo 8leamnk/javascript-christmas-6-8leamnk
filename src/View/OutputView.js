@@ -20,6 +20,11 @@ const OutputView = {
     Console.print(total);
   },
 
+  printGift(gift) {
+    Console.print(MESSAGE.output.gift);
+    Console.print(gift);
+  },
+
   // ...
 };
 

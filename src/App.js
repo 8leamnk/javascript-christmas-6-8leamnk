@@ -48,8 +48,10 @@ class App {
     const total = Total.calculateTotal(menu);
     const gift = Total.calculateGift(total);
     const totalString = convertCurrencyUnit(total);
+    const giftDetail = Total.getGiftDetail(gift);
 
     OutputView.printTotal(totalString);
+    OutputView.printGift(giftDetail);
 
     return { total, gift };
   }

@@ -24,6 +24,14 @@ const Total = {
 
     return gift;
   },
+
+  getGiftDetail(gift) {
+    if (gift > 0) {
+      return VALUE.gift.detail;
+    }
+
+    return MESSAGE.none;
+  },
 };
 
 export default Total;

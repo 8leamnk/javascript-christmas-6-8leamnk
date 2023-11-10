@@ -21,6 +21,22 @@ describe('메뉴 클래스 테스트', () => {
     expect(menu).toEqual(output);
   });
 
+  test('유효성 검사가 끝난 후 주문 내역 가져오기', () => {
+    // given
+    const INPUT =
+      '양송이수프-1,티본스테이크-1,해산물파스타-1,아이스크림-2,제로콜라-1';
+    const OUTPUT =
+      '양송이수프 1개\n티본스테이크 1개\n해산물파스타 1개\n아이스크림 2개\n제로콜라 1개\n';
+
+    // when
+    const menuObject = new Menu();
+    menuObject.validate(INPUT);
+    const orderHistory = menuObject.getOrderHistory();
+
+    // then
+    expect(orderHistory).toEqual(OUTPUT);
+  });
+
   test('메뉴판에 없는 메뉴면 예외가 발생한다.', () => {
     // given
     const INPUT = '해산물파스타-2,화이트와인-1,초코케이크-1';

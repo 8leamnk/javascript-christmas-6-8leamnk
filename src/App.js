@@ -45,9 +45,8 @@ class App {
   }
 
   static #executeTotal(menu) {
-    const totlaObject = new Total();
-    const total = totlaObject.calculateTotal(menu);
-    const gift = totlaObject.calculateGift();
+    const total = Total.calculateTotal(menu);
+    const gift = Total.calculateGift(total);
     const totalString = convertCurrencyUnit(total);
 
     OutputView.printTotal(totalString);

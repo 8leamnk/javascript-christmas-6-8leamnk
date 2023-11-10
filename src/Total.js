@@ -1,33 +1,29 @@
 import getAllMenus from './utils/menuUtils.js';
+import MESSAGE from './constants/message.js';
 import VALUE from './constants/value.js';
 
-class Total {
-  #total;
-
-  constructor() {
-    this.#total = 0;
-  }
-
+const Total = {
   calculateTotal(menu) {
     const allMenus = getAllMenus();
+    let total = 0;
 
     menu.forEach((value, key) => {
-      this.#total += allMenus.get(key) * value;
+      total += allMenus.get(key) * value;
     });
 
-    return this.#total;
-  }
+    return total;
+  },
 
-  calculateGift() {
-    let gift = 0;
+  calculateGift(total) {
     const type = VALUE.gift.detail.split(' ').at(0);
+    let gift = 0;
 
-    if (this.#total >= VALUE.gift.condition) {
+    if (total >= VALUE.gift.condition) {
       gift += VALUE.menu.drink.get(type);
     }
 
     return gift;
-  }
-}
+  },
+};
 
 export default Total;

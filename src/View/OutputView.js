@@ -15,6 +15,11 @@ const OutputView = {
     Console.print(orderHistory);
   },
 
+  printTotal(total) {
+    Console.print(MESSAGE.output.total);
+    Console.print(total);
+  },
+
   // ...
 };
 

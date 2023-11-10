@@ -1,7 +1,9 @@
 import Date from './Date.js';
 import Menu from './Menu.js';
+import Total from './Total.js';
 import InputView from './View/InputView.js';
 import OutputView from './View/OutputView.js';
+import convertCurrencyUnit from './utils/convertUtils.js';
 
 class App {
   async run() {
@@ -9,6 +11,7 @@ class App {
 
     const date = await this.#executeDate();
     const menu = await this.#executeMenu();
+    const { total, gift } = App.#executeTotal(menu);
   }
 
   async #executeDate() {
@@ -39,6 +42,17 @@ class App {
       OutputView.printError(error);
       return this.#executeMenu();
     }
+  }
+
+  static #executeTotal(menu) {
+    const totlaObject = new Total();
+    const total = totlaObject.calculateTotal(menu);
+    const gift = totlaObject.calculateGift();
+    const totalString = convertCurrencyUnit(total);
+
+    OutputView.printTotal(totalString);
+
+    return { total, gift };
   }
 }
 

@@ -11,9 +11,10 @@ const OutputView = {
   },
 
   printMenu(orderHistory) {
-    Console.print(MESSAGE.input.menu);
+    Console.print(MESSAGE.output.menu);
     Console.print(orderHistory);
   },
+
   // ...
 };
 

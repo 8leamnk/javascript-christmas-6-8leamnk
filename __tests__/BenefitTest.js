@@ -30,6 +30,6 @@ describe('혜택 클래스 테스트', () => {
     const benefitObj = new Benefit(DATE, menu, TOTAL, GIFT);
     const benefit = benefitObj.getBenefitDetail();
 
-    expect(benefit).toEqual(output);
+    expect(benefit).toEqual(output.join(''));
   });
 });

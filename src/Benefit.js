@@ -29,7 +29,7 @@ class Benefit {
         ([type, amount]) => `${type}: -${convertCurrencyUnit(amount)}`,
       );
 
-      return benefitDetail;
+      return benefitDetail.join('');
     }
 
     return MESSAGE.none;

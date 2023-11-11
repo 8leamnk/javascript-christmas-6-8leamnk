@@ -44,7 +44,10 @@ const OutputView = {
     Console.print(payment);
   },
 
-  // ...
+  printBadge(badge) {
+    Console.print(MESSAGE.output.badge);
+    Console.print(badge);
+  },
 };
 
 export default OutputView;

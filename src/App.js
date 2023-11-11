@@ -18,6 +18,8 @@ class App {
 
     const { total, gift } = App.#executeTotal(menu);
     const benefit = App.#executeBenefit(date, menu, total, gift);
+
+    App.#executeBadge(benefit);
   }
 
   async #executeDate() {
@@ -70,6 +72,12 @@ class App {
     OutputView.printPayment(payment);
 
     return benefit;
+  }
+
+  static #executeBadge(benefit) {
+    const badge = Badge.getBadge(benefit);
+
+    OutputView.printBadge(badge);
   }
 }
 

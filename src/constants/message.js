@@ -13,6 +13,7 @@ const MESSAGE = {
     benefitDetail: '<혜택 내역>',
     benefit: '<총혜택 금액>',
     payment: '<할인 후 예상 결제 금액>',
+    badge: '<12월 이벤트 배지>',
   },
 
   error: {
@@ -26,7 +27,9 @@ const MESSAGE = {
   none: '없음',
 };
 
+Object.freeze(MESSAGE.input);
 Object.freeze(MESSAGE.output);
+Object.freeze(MESSAGE.error);
 Object.freeze(MESSAGE);
 
 export default MESSAGE;

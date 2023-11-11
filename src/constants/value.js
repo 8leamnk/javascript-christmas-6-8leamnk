@@ -48,6 +48,12 @@ const VALUE = {
     gift: '증정 이벤트',
   },
 
+  badges: [
+    [20000, '산타'],
+    [10000, '트리'],
+    [5000, '별'],
+  ],
+
   month: 12,
 
   date: {
@@ -68,6 +74,10 @@ const VALUE = {
 
 Object.freeze(VALUE.menu);
 Object.freeze(VALUE.gift);
+Object.freeze(VALUE.discount);
+Object.freeze(VALUE.benefit);
+Object.freeze(VALUE.badges);
+Object.freeze(VALUE.date);
 Object.freeze(VALUE.unit);
 Object.freeze(VALUE);
 

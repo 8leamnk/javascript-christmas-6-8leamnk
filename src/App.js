@@ -10,8 +10,11 @@ class App {
   async run() {
     OutputView.printIntro();
 
-    const date = await this.#executeDate();
-    const menu = await this.#executeMenu();
+    const { date, monthAndDay } = await this.#executeDate();
+    const { menu, orderHistory } = await this.#executeMenu();
+
+    OutputView.printPreview(monthAndDay);
+    OutputView.printMenu(orderHistory);
 
     const { total, gift } = App.#executeTotal(menu);
     const benefit = App.#executeBenefit(date, menu, total, gift);
@@ -22,10 +25,9 @@ class App {
       const dateInput = await InputView.readDate();
       const date = Number(dateInput);
       const dateObject = new Date(date);
+      const monthAndDay = dateObject.getMonthAndDay();
 
-      dateObject.validate();
-
-      return date;
+      return { date, monthAndDay };
     } catch (error) {
       OutputView.printError(error);
       return this.#executeDate();
@@ -35,12 +37,10 @@ class App {
   async #executeMenu() {
     try {
       const menuInput = await InputView.readMenu();
-      const menuObject = new Menu();
-      const menu = menuObject.validate(menuInput);
+      const menuObject = new Menu(menuInput);
+      const { menu, orderHistory } = menuObject.getMenu();
 
-      OutputView.printMenu(menuObject.arrangeOrderHistory());
-
-      return menu;
+      return { menu, orderHistory };
     } catch (error) {
       OutputView.printError(error);
       return this.#executeMenu();

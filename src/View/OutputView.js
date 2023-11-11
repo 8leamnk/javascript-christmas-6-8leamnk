@@ -10,6 +10,10 @@ const OutputView = {
     Console.print(MESSAGE.output.intro);
   },
 
+  printPreview(monthAndDay) {
+    Console.print(`${monthAndDay}${MESSAGE.output.preview}`);
+  },
+
   printMenu(orderHistory) {
     Console.print(MESSAGE.output.menu);
     Console.print(orderHistory);

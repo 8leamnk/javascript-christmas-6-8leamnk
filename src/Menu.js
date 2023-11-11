@@ -5,21 +5,20 @@ import MESSAGE from './constants/message.js';
 class Menu {
   #menu;
 
-  constructor() {
+  constructor(input) {
     this.#menu = new Map();
+    this.#validate(input);
   }
 
-  arrangeOrderHistory() {
-    const orderHistory = [];
+  getMenu() {
+    const orderHistory = [...this.#menu]
+      .map(([name, number]) => `${name} ${number}${VALUE.unit.number}\n`)
+      .join('');
 
-    this.#menu.forEach((value, key) => {
-      orderHistory.push(`${key} ${value}${VALUE.unit.number}\n`);
-    });
-
-    return orderHistory.join('');
+    return { menu: this.#menu, orderHistory };
   }
 
-  validate(input) {
+  #validate(input) {
     const allMenuNames = [...getAllMenus().keys()];
 
     input.split(',').forEach((menuAndNumber) => {
@@ -28,8 +27,6 @@ class Menu {
 
     this.#validateOnlyDrink();
     this.#validateSumOfMenus();
-
-    return this.#menu;
   }
 
   #validatePerMenu(menuAndNumber, allMenuNames) {

@@ -34,10 +34,10 @@ const VALUE = {
 
   discount: {
     condition: 10000,
-    ddayIncreaseAmount: 100,
-    dday: 1000,
-    week: 2023,
-    special: 1000,
+    ddayIncreaseAmount: -100,
+    dday: -1000,
+    week: -2023,
+    special: -1000,
   },
 
   benefit: {

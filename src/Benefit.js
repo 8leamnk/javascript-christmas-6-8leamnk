@@ -16,25 +16,25 @@ class Benefit {
       0,
     );
 
-    return { benefit, benefitString: `-${convertCurrencyUnit(benefit)}` };
-  }
-
-  static getPayment(total, benefit, gift) {
-    const payment = total - benefit + gift;
-
-    return convertCurrencyUnit(payment);
+    return { benefit, benefitString: `${convertCurrencyUnit(benefit)}` };
   }
 
   getBenefitDetail() {
     if (this.#benefit.size > 0) {
       const benefitDetail = [...this.#benefit].map(
-        ([type, amount]) => `${type}: -${convertCurrencyUnit(amount)}\n`,
+        ([type, amount]) => `${type}: ${convertCurrencyUnit(amount)}\n`,
       );
 
       return benefitDetail.join('');
     }
 
     return MESSAGE.none;
+  }
+
+  static getPayment(total, benefit, gift) {
+    const payment = total + benefit + gift;
+
+    return convertCurrencyUnit(payment);
   }
 
   #applyBenefit(date, menu, total, gift) {
@@ -66,7 +66,7 @@ class Benefit {
 
   #applyGiftEvent(gift) {
     if (gift > 0) {
-      this.#benefit.set(VALUE.benefit.gift, gift);
+      this.#benefit.set(VALUE.benefit.gift, gift * -1);
     }
   }
 

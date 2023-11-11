@@ -9,6 +9,7 @@ const MESSAGE = {
     menu: '<주문 메뉴>',
     total: '<할인 전 총주문 금액>',
     gift: '<증정 메뉴>',
+    benefitDetail: '<혜택 내역>',
   },
 
   error: {

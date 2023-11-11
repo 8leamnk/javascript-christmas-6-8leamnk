@@ -25,6 +25,11 @@ const OutputView = {
     Console.print(gift);
   },
 
+  printBenefitDetail(benefitDetail) {
+    Console.print(MESSAGE.output.benefitDetail);
+    Console.print(benefitDetail);
+  },
+
   // ...
 };
 

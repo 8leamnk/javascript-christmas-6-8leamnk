@@ -26,7 +26,7 @@ class Benefit {
   getBenefitDetail() {
     if (this.#benefit.size > 0) {
       const benefitDetail = [...this.#benefit].map(
-        ([type, amount]) => `${type}: -${convertCurrencyUnit(amount)}`,
+        ([type, amount]) => `${type}: -${convertCurrencyUnit(amount)}\n`,
       );
 
       return benefitDetail.join('');

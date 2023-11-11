@@ -1,6 +1,7 @@
 import Date from './Date.js';
 import Menu from './Menu.js';
 import Total from './Total.js';
+import Benefit from './Benefit.js';
 import InputView from './View/InputView.js';
 import OutputView from './View/OutputView.js';
 import convertCurrencyUnit from './utils/convertUtils.js';
@@ -11,7 +12,9 @@ class App {
 
     const date = await this.#executeDate();
     const menu = await this.#executeMenu();
+
     const { total, gift } = App.#executeTotal(menu);
+    const benefit = App.#executeBenefit(date, menu, total, gift);
   }
 
   async #executeDate() {
@@ -54,6 +57,19 @@ class App {
     OutputView.printGift(giftDetail);
 
     return { total, gift };
+  }
+
+  static #executeBenefit(date, menu, total, gift) {
+    const benefitObject = new Benefit(date, menu, total, gift);
+    const { benefit, benefitString } = benefitObject.getBenefit();
+    const benefitDetail = benefitObject.getBenefitDetail();
+    const payment = Benefit.getPayment(total, benefit, gift);
+
+    OutputView.printBenefitDetail(benefitDetail);
+    OutputView.printBenefit(benefitString);
+    OutputView.printPayment(payment);
+
+    return benefit;
   }
 }
 

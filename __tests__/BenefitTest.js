@@ -14,9 +14,9 @@ describe('혜택 클래스 테스트', () => {
     const OUTPUT = '-33,446원';
 
     const benefitObj = new Benefit(DATE, menu, TOTAL, GIFT);
-    const benefit = benefitObj.getBenefit();
+    const { benefitString } = benefitObj.getBenefit();
 
-    expect(benefit).toBe(OUTPUT);
+    expect(benefitString).toBe(OUTPUT);
   });
 
   test('혜택 내역이 올바르게 반환 된다.', () => {

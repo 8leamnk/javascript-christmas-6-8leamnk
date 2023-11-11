@@ -40,9 +40,8 @@ class App {
     try {
       const menuInput = await InputView.readMenu();
       const menuObject = new Menu(menuInput);
-      const { menu, orderHistory } = menuObject.getMenu();
 
-      return { menu, orderHistory };
+      return menuObject.getMenu();
     } catch (error) {
       OutputView.printError(error);
       return this.#executeMenu();

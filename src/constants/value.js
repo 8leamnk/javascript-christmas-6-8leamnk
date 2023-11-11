@@ -48,6 +48,8 @@ const VALUE = {
     gift: '증정 이벤트',
   },
 
+  month: 12,
+
   date: {
     friday: 1,
     saturday: 2,
@@ -57,6 +59,8 @@ const VALUE = {
   },
 
   unit: {
+    month: '월',
+    date: '일',
     number: '개',
     won: '원',
   },

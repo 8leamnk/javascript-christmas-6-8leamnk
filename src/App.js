@@ -2,9 +2,9 @@ import Date from './Date.js';
 import Menu from './Menu.js';
 import Total from './Total.js';
 import Benefit from './Benefit.js';
+import Badge from './Badge.js';
 import InputView from './View/InputView.js';
 import OutputView from './View/OutputView.js';
-import convertCurrencyUnit from './utils/convertUtils.js';
 
 class App {
   async run() {
@@ -50,7 +50,7 @@ class App {
   static #executeTotal(menu) {
     const total = Total.calculateTotal(menu);
     const gift = Total.calculateGift(total);
-    const totalString = convertCurrencyUnit(total);
+    const totalString = Total.getTotalString(total);
     const giftDetail = Total.getGiftDetail(gift);
 
     OutputView.printTotal(totalString);

@@ -1,4 +1,5 @@
 import getAllMenus from './utils/menuUtils.js';
+import convertCurrencyUnit from './utils/convertUtils.js';
 import MESSAGE from './constants/message.js';
 import VALUE from './constants/value.js';
 
@@ -23,6 +24,10 @@ const Total = {
     }
 
     return gift;
+  },
+
+  getTotalString(total) {
+    return convertCurrencyUnit(total);
   },
 
   getGiftDetail(gift) {

@@ -1,3 +1,5 @@
+import convertCurrencyUnit from './utils/convertUtils.js';
+import MESSAGE from './constants/message.js';
 import VALUE from './constants/value.js';
 
 class Benefit {
@@ -19,6 +21,18 @@ class Benefit {
 
   static getDiscount(benefit, gift) {
     return benefit - gift;
+  }
+
+  getBenefitDetail() {
+    if (this.#benefit.size > 0) {
+      const benefitDetail = [...this.#benefit].map(
+        ([type, amount]) => `${type}: -${convertCurrencyUnit(amount)}`,
+      );
+
+      return benefitDetail;
+    }
+
+    return MESSAGE.none;
   }
 
   #applyBenefit(date, menu, total, gift) {

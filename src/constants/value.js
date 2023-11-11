@@ -32,6 +32,30 @@ const VALUE = {
     condition: 120000,
   },
 
+  discount: {
+    condition: 10000,
+    ddayIncreaseAmount: 100,
+    dday: 1000,
+    week: 2023,
+    special: 1000,
+  },
+
+  benefit: {
+    dday: '크리스마스 디데이 할인',
+    weekday: '평일 할인',
+    weekend: '주말 할인',
+    special: '특별 할인',
+    gift: '증정 이벤트',
+  },
+
+  date: {
+    friday: 1,
+    saturday: 2,
+    sunday: 3,
+    week: 7,
+    christmasDay: 25,
+  },
+
   unit: {
     number: '개',
     won: '원',

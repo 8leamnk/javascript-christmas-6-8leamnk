@@ -16,7 +16,7 @@ class Benefit {
       0,
     );
 
-    return `-${convertCurrencyUnit(benefit)}`;
+    return { benefit, benefitString: `-${convertCurrencyUnit(benefit)}` };
   }
 
   static getDiscount(benefit, gift) {

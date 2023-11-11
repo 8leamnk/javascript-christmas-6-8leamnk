@@ -30,6 +30,11 @@ const OutputView = {
     Console.print(benefitDetail);
   },
 
+  printBenefit(benefit) {
+    Console.print();
+    Console.print(benefit);
+  },
+
   // ...
 };
 

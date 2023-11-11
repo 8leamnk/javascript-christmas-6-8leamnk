@@ -8,7 +8,7 @@ const Badge = {
     for (let i = 0; i < badges.length; i += 1) {
       const [standard, badge] = badges[i];
 
-      if (benefit >= standard) {
+      if (benefit * -1 >= standard) {
         return badge;
       }
     }

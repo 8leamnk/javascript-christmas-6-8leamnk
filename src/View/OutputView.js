@@ -31,8 +31,13 @@ const OutputView = {
   },
 
   printBenefit(benefit) {
-    Console.print();
+    Console.print(MESSAGE.output.benefit);
     Console.print(benefit);
+  },
+
+  printPayment(payment) {
+    Console.print(MESSAGE.output.payment);
+    Console.print(payment);
   },
 
   // ...

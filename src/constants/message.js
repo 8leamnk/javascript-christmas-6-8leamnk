@@ -11,6 +11,7 @@ const MESSAGE = {
     gift: '<증정 메뉴>',
     benefitDetail: '<혜택 내역>',
     benefit: '<총혜택 금액>',
+    payment: '<할인 후 예상 결제 금액>',
   },
 
   error: {

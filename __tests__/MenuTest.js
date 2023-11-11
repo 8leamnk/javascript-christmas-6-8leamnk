@@ -14,8 +14,8 @@ describe('메뉴 클래스 테스트', () => {
     ]);
 
     // when
-    const menuObject = new Menu();
-    const menu = menuObject.validate(INPUT);
+    const menuObject = new Menu(INPUT);
+    const { menu } = menuObject.getMenu();
 
     // then
     expect(menu).toEqual(output);
@@ -29,9 +29,8 @@ describe('메뉴 클래스 테스트', () => {
       '양송이수프 1개\n티본스테이크 1개\n해산물파스타 1개\n아이스크림 2개\n제로콜라 1개\n';
 
     // when
-    const menuObject = new Menu();
-    menuObject.validate(INPUT);
-    const orderHistory = menuObject.arrangeOrderHistory();
+    const menuObject = new Menu(INPUT);
+    const { orderHistory } = menuObject.getMenu();
 
     // then
     expect(orderHistory).toEqual(OUTPUT);
@@ -41,12 +40,9 @@ describe('메뉴 클래스 테스트', () => {
     // given
     const INPUT = '해산물파스타-2,화이트와인-1,초코케이크-1';
 
-    // when
-    const menuObject = new Menu();
-
     // then
     expect(() => {
-      menuObject.validate(INPUT);
+      new Menu(INPUT);
     }).toThrow('[ERROR]');
   });
 
@@ -54,12 +50,8 @@ describe('메뉴 클래스 테스트', () => {
     ['해산물파스타-0,레드와인-1,초코케이크-1'],
     ['바비큐립-1,아이스크림-a,시저샐러드-1'],
   ])('메뉴의 개수가 1 이상의 숫자가 아니면 예외가 발생한다.', (input) => {
-    // when
-    const menuObject = new Menu();
-
-    // then
     expect(() => {
-      menuObject.validate(input);
+      new Menu(input);
     }).toThrow('[ERROR]');
   });
 
@@ -67,12 +59,9 @@ describe('메뉴 클래스 테스트', () => {
     // given
     const INPUT = '해산물파스타-2,레드와인-1,초코케이크-->1';
 
-    // when
-    const menuObject = new Menu();
-
     // then
     expect(() => {
-      menuObject.validate(INPUT);
+      new Menu(INPUT);
     }).toThrow('[ERROR]');
   });
 
@@ -80,12 +69,9 @@ describe('메뉴 클래스 테스트', () => {
     // given
     const INPUT = '양송이수프-2,양송이수프-1,샴페인-1';
 
-    // when
-    const menuObject = new Menu();
-
     // then
     expect(() => {
-      menuObject.validate(INPUT);
+      new Menu(INPUT);
     }).toThrow('[ERROR]');
   });
 
@@ -95,12 +81,9 @@ describe('메뉴 클래스 테스트', () => {
     const ERROR_MESSAGE =
       '[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다. (e.g. 시저샐러드-1, 티본스테이크-1, 크리스마스파스타-1, 제로콜라-3, 아이스크림-1의 총개수는 7개)';
 
-    // when
-    const menuObject = new Menu();
-
     // then
     expect(() => {
-      menuObject.validate(INPUT);
+      new Menu(INPUT);
     }).toThrow(ERROR_MESSAGE);
   });
 
@@ -109,12 +92,9 @@ describe('메뉴 클래스 테스트', () => {
     const INPUT = '제로콜라-3,레드와인-2,샴페인-1';
     const ERROR_MESSAGE = '[ERROR] 음료만 주문 시, 주문할 수 없습니다.';
 
-    // when
-    const menuObject = new Menu();
-
     // then
     expect(() => {
-      menuObject.validate(INPUT);
+      new Menu(INPUT);
     }).toThrow(ERROR_MESSAGE);
   });
 });

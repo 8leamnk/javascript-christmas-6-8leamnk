@@ -19,8 +19,10 @@ class Benefit {
     return { benefit, benefitString: `-${convertCurrencyUnit(benefit)}` };
   }
 
-  static getDiscount(benefit, gift) {
-    return benefit - gift;
+  static getPayment(total, benefit, gift) {
+    const payment = total - benefit + gift;
+
+    return convertCurrencyUnit(payment);
   }
 
   getBenefitDetail() {

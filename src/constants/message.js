@@ -25,6 +25,8 @@ const MESSAGE = {
   },
 
   none: '없음',
+
+  newline: '\n',
 };
 
 Object.freeze(MESSAGE.input);

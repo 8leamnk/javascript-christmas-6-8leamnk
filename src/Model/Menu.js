@@ -19,8 +19,8 @@ class Menu {
 
   #findOutOrderHistory() {
     const orderHistory = [...this.#menu]
-      .map(([name, number]) => `${name} ${number}${VALUE.unit.number}\n`)
-      .join('');
+      .map(([name, number]) => `${name} ${number}${VALUE.unit.number}`)
+      .join(MESSAGE.newline);
 
     return orderHistory;
   }

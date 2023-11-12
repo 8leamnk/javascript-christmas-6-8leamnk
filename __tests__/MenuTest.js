@@ -1,4 +1,4 @@
-import Menu from '../src/Menu.js';
+import Menu from '../src/Model/Menu.js';
 
 describe('메뉴 클래스 테스트', () => {
   test('유효성 검사에서 문제가 없으면 Map 객체로 잘 반환된다.', () => {
@@ -26,7 +26,7 @@ describe('메뉴 클래스 테스트', () => {
     const INPUT =
       '양송이수프-1,티본스테이크-1,해산물파스타-1,아이스크림-2,제로콜라-1';
     const OUTPUT =
-      '양송이수프 1개\n티본스테이크 1개\n해산물파스타 1개\n아이스크림 2개\n제로콜라 1개\n';
+      '양송이수프 1개\n티본스테이크 1개\n해산물파스타 1개\n아이스크림 2개\n제로콜라 1개';
 
     // when
     const menuObject = new Menu(INPUT);

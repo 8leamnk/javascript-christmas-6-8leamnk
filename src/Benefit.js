@@ -10,16 +10,16 @@ class Benefit {
     this.#applyBenefit(date, menu, total, gift);
   }
 
-  getBenefit() {
-    const benefit = [...this.#benefit.values()].reduce(
+  calculateTotalBenefit() {
+    const total = [...this.#benefit.values()].reduce(
       (acc, amount) => acc + amount,
       0,
     );
 
-    return { benefit, benefitString: `${convertCurrencyUnit(benefit)}` };
+    return { benefit: total, benefitString: convertCurrencyUnit(total) };
   }
 
-  getBenefitDetail() {
+  findOutBenefitDetail() {
     if (this.#benefit.size > 0) {
       const benefitDetail = [...this.#benefit].map(
         ([type, amount]) => `${type}: ${convertCurrencyUnit(amount)}\n`,
@@ -31,7 +31,7 @@ class Benefit {
     return MESSAGE.none;
   }
 
-  static getPayment(total, benefit, gift) {
+  static calculatePayment(total, benefit, gift) {
     const payment = total + benefit + gift;
 
     return convertCurrencyUnit(payment);

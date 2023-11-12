@@ -60,9 +60,9 @@ class App {
 
   static #executeBenefit(date, menu, total, gift) {
     const benefitObject = new Benefit(date, menu, total, gift);
-    const { benefit, benefitString } = benefitObject.getBenefit();
-    const benefitDetail = benefitObject.getBenefitDetail();
-    const payment = Benefit.getPayment(total, benefit, gift);
+    const { benefit, benefitString } = benefitObject.calculateTotalBenefit();
+    const benefitDetail = benefitObject.findOutBenefitDetail();
+    const payment = Benefit.calculatePayment(total, benefit, gift);
 
     OutputView.printBenefitDetail(benefitDetail);
     OutputView.printBenefit(benefitString);

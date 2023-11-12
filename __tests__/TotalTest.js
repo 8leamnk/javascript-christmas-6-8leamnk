@@ -1,33 +1,56 @@
 import Total from '../src/Total.js';
 
 describe('Total 클래스를 테스트', () => {
-  test('총주문 금액이 120,000원 이상이면 증정 이벤트가 적용된다.', () => {
+  test('총주문 금액 계산', () => {
     // given
-    const TOTAL = 120000;
-    const GIFT = 25000;
-    const GIFT_DETAIL = '샴페인 1개';
+    const menu = new Map([
+      ['타파스', 1],
+      ['티본스테이크', 1],
+      ['해산물파스타', 1],
+      ['레드와인', 1],
+    ]);
+    const OUTPUT = 155500;
 
     // when
-    const gift = Total.calculateGift(TOTAL);
-    const giftDetail = Total.getGiftDetail(gift);
+    const total = Total.calculateTotal(menu);
 
     // then
-    expect(gift).toBe(GIFT);
-    expect(giftDetail).toBe(GIFT_DETAIL);
+    expect(total).toBe(OUTPUT);
   });
 
-  test('총주문 금액이 120,000원 미만이면 증정 이벤트가 없다.', () => {
+  test.each([
+    [120000, 25000, '샴페인 1개', '없음'],
+    [119000, 0, '없음', '샴페인 1개'],
+  ])(
+    '총주문 금액이 120,000원 이상이면 증정 이벤트가 적용된다.',
+    (total, gift, correct, incorrect) => {
+      // when
+      const giftOutput = Total.calculateGift(total);
+      const giftDetail = Total.findOutGiftDetail(gift);
+
+      // then
+      expect(giftOutput).toBe(gift);
+      expect(giftDetail).toBe(correct);
+      expect(giftDetail).not.toBe(incorrect);
+    },
+  );
+
+  test('총주문 금액이 1,000원 단위의 화폐로 표시 된다.', () => {
     // given
-    const TOTAL = 119000;
-    const GIFT = 0;
-    const GIFT_DETAIL = '없음';
+    const INPUT = 70000;
+    const OUTPUT = '70,000원';
 
     // when
-    const gift = Total.calculateGift(TOTAL);
-    const giftDetail = Total.getGiftDetail(gift);
+    const totalString = Total.displayTotal(INPUT);
 
     // then
-    expect(gift).toBe(GIFT);
-    expect(giftDetail).toBe(GIFT_DETAIL);
+    expect(totalString).toBe(OUTPUT);
+  });
+
+  test.each([
+    [0, '없음'],
+    [25000, '샴페인 1개'],
+  ])('증정 금액이 없음 또는 샴페인 1개로 표시 된다.', (input, output) => {
+    expect(Total.findOutGiftDetail(input)).toBe(output);
   });
 });

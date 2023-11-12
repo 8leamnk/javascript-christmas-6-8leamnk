@@ -41,7 +41,7 @@ class App {
       const menuInput = await InputView.readMenu();
       const menuObject = new Menu(menuInput);
 
-      return menuObject.getMenu();
+      return menuObject.findOutMenuInfo();
     } catch (error) {
       OutputView.printError(error);
       return this.#executeMenu();

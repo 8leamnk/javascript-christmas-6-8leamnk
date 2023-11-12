@@ -70,6 +70,10 @@ const VALUE = {
     number: '개',
     won: '원',
   },
+
+  hyphen: '-',
+
+  comma: ',',
 };
 
 Object.freeze(VALUE.menu);

@@ -1,6 +1,6 @@
 import getAllMenus from './utils/menuUtils.js';
-import VALUE from './constants/value.js';
 import MESSAGE from './constants/message.js';
+import VALUE from './constants/value.js';
 
 class Menu {
   #menu;
@@ -10,18 +10,19 @@ class Menu {
     this.#validate(input);
   }
 
-  getMenu() {
+  findOutMenuInfo() {
+    const menu = this.#menu;
     const orderHistory = [...this.#menu]
       .map(([name, number]) => `${name} ${number}${VALUE.unit.number}\n`)
       .join('');
 
-    return { menu: this.#menu, orderHistory };
+    return { menu, orderHistory };
   }
 
   #validate(input) {
     const allMenuNames = [...getAllMenus().keys()];
 
-    input.split(',').forEach((menuAndNumber) => {
+    input.split(VALUE.comma).forEach((menuAndNumber) => {
       this.#validatePerMenu(menuAndNumber, allMenuNames);
     });
 
@@ -30,7 +31,7 @@ class Menu {
   }
 
   #validatePerMenu(menuAndNumber, allMenuNames) {
-    const [menu, numberString] = menuAndNumber.split('-');
+    const [menu, numberString] = menuAndNumber.split(VALUE.hyphen);
     const number = Number(numberString);
 
     Menu.#validateFormat(menuAndNumber);

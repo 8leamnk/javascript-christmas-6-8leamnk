@@ -1,6 +1,6 @@
-import convertCurrencyUnit from './utils/convertUtils.js';
-import MESSAGE from './constants/message.js';
-import VALUE from './constants/value.js';
+import convertCurrencyUnit from '../utils/convertUtils.js';
+import MESSAGE from '../constants/message.js';
+import VALUE from '../constants/value.js';
 
 class Benefit {
   #benefit;

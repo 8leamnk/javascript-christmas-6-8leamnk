@@ -1,4 +1,4 @@
-import Benefit from '../src/Benefit.js';
+import Benefit from '../src/Model/Benefit.js';
 
 describe('혜택 클래스 테스트', () => {
   const DATE = 25;

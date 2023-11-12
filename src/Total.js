@@ -26,11 +26,11 @@ const Total = {
     return gift;
   },
 
-  getTotalString(total) {
+  displayTotal(total) {
     return convertCurrencyUnit(total);
   },
 
-  getGiftDetail(gift) {
+  findOutGiftDetail(gift) {
     if (gift > 0) {
       return VALUE.gift.detail;
     }

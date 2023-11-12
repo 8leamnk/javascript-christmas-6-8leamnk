@@ -51,8 +51,8 @@ class App {
   static #executeTotal(menu) {
     const total = Total.calculateTotal(menu);
     const gift = Total.calculateGift(total);
-    const totalString = Total.getTotalString(total);
-    const giftDetail = Total.getGiftDetail(gift);
+    const totalString = Total.displayTotal(total);
+    const giftDetail = Total.findOutGiftDetail(gift);
 
     OutputView.printTotal(totalString);
     OutputView.printGift(giftDetail);

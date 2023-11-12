@@ -12,11 +12,17 @@ class Menu {
 
   findOutMenuInfo() {
     const menu = this.#menu;
+    const orderHistory = this.#findOutOrderHistory();
+
+    return { menu, orderHistory };
+  }
+
+  #findOutOrderHistory() {
     const orderHistory = [...this.#menu]
       .map(([name, number]) => `${name} ${number}${VALUE.unit.number}\n`)
       .join('');
 
-    return { menu, orderHistory };
+    return orderHistory;
   }
 
   #validate(input) {

@@ -15,7 +15,7 @@ describe('메뉴 클래스 테스트', () => {
 
     // when
     const menuObject = new Menu(INPUT);
-    const { menu } = menuObject.getMenu();
+    const { menu } = menuObject.findOutMenuInfo();
 
     // then
     expect(menu).toEqual(output);
@@ -30,7 +30,7 @@ describe('메뉴 클래스 테스트', () => {
 
     // when
     const menuObject = new Menu(INPUT);
-    const { orderHistory } = menuObject.getMenu();
+    const { orderHistory } = menuObject.findOutMenuInfo();
 
     // then
     expect(orderHistory).toEqual(OUTPUT);

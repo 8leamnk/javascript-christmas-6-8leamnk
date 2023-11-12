@@ -1,6 +1,6 @@
-import getAllMenus from './utils/menuUtils.js';
-import MESSAGE from './constants/message.js';
-import VALUE from './constants/value.js';
+import getAllMenus from '../utils/menuUtils.js';
+import MESSAGE from '../constants/message.js';
+import VALUE from '../constants/value.js';
 
 class Menu {
   #menu;

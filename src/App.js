@@ -1,6 +1,7 @@
 import Date from './Date.js';
 import Menu from './Menu.js';
 import Total from './Total.js';
+import Gift from './Gift.js';
 import Benefit from './Benefit.js';
 import Badge from './Badge.js';
 import InputView from './View/InputView.js';
@@ -16,7 +17,8 @@ class App {
     OutputView.printPreview(monthAndDay);
     OutputView.printMenu(orderHistory);
 
-    const { total, gift } = App.#executeTotal(menu);
+    const total = App.#executeTotal(menu);
+    const gift = App.#executeGift(total);
     const benefit = App.#executeBenefit(date, menu, total, gift);
 
     App.#executeBadge(benefit);
@@ -48,14 +50,20 @@ class App {
 
   static #executeTotal(menu) {
     const total = Total.calculateTotal(menu);
-    const gift = Total.calculateGift(total);
     const totalString = Total.displayTotal(total);
-    const giftDetail = Total.findOutGiftDetail(gift);
 
     OutputView.printTotal(totalString);
+
+    return total;
+  }
+
+  static #executeGift(total) {
+    const gift = Gift.calculateGift(total);
+    const giftDetail = Gift.findOutGiftDetail(gift);
+
     OutputView.printGift(giftDetail);
 
-    return { total, gift };
+    return gift;
   }
 
   static #executeBenefit(date, menu, total, gift) {

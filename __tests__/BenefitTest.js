@@ -16,7 +16,7 @@ describe('혜택 클래스 테스트', () => {
 
     // when
     const benefitObj = new Benefit(DATE, menu, TOTAL, GIFT);
-    const { benefitString } = benefitObj.findOutTotalBenefit();
+    const { benefitString } = benefitObj.findOutTotalBenefitInfo();
 
     // then
     expect(benefitString).toBe(OUTPUT);

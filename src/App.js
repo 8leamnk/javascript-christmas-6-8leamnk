@@ -70,7 +70,7 @@ class App {
 
   static #executeBenefit(date, menu, total, gift) {
     const benefitObject = new Benefit(date, menu, total, gift);
-    const { benefit, benefitString } = benefitObject.findOutTotalBenefit();
+    const { benefit, benefitString } = benefitObject.findOutTotalBenefitInfo();
     const benefitDetail = benefitObject.findOutBenefitDetail();
 
     OutputView.printBenefitDetail(benefitDetail);

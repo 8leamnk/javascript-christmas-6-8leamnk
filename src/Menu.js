@@ -22,32 +22,34 @@ class Menu {
   #validate(input) {
     const allMenuNames = [...getAllMenus().keys()];
 
-    input.split(VALUE.comma).forEach((menuAndNumber) => {
-      this.#validatePerMenu(menuAndNumber, allMenuNames);
+    input.split(VALUE.comma).forEach((string) => {
+      const nameAndNumber = string.trim();
+
+      this.#validatePerMenu(nameAndNumber, allMenuNames);
     });
 
     this.#validateOnlyDrink();
     this.#validateSumOfMenus();
   }
 
-  #validatePerMenu(menuAndNumber, allMenuNames) {
-    const [menu, numberString] = menuAndNumber.split(VALUE.hyphen);
+  #validatePerMenu(nameAndNumber, allMenuNames) {
+    const [name, numberString] = nameAndNumber.split(VALUE.hyphen);
     const number = Number(numberString);
 
-    Menu.#validateFormat(menuAndNumber);
-    Menu.#validateNotExistMenu(menu, allMenuNames);
+    Menu.#validateFormat(nameAndNumber);
+    Menu.#validateNotExistMenu(name, allMenuNames);
     Menu.#validateNumberOfMenus(number);
-    this.#validateDuplication(menu, number);
+    this.#validateDuplication(name, number);
   }
 
-  static #validateFormat(menuAndNumber) {
-    if (!VALUE.menu.format.test(menuAndNumber)) {
+  static #validateFormat(nameAndNumber) {
+    if (!VALUE.menu.format.test(nameAndNumber)) {
       throw new Error(MESSAGE.error.menu);
     }
   }
 
-  static #validateNotExistMenu(menu, allMenuNames) {
-    if (!allMenuNames.includes(menu)) {
+  static #validateNotExistMenu(name, allMenuNames) {
+    if (!allMenuNames.includes(name)) {
       throw new Error(MESSAGE.error.menu);
     }
   }
@@ -58,12 +60,12 @@ class Menu {
     }
   }
 
-  #validateDuplication(menu, number) {
-    if (this.#menu.get(menu)) {
+  #validateDuplication(name, number) {
+    if (this.#menu.get(name)) {
       throw new Error(MESSAGE.error.menu);
     }
 
-    this.#menu.set(menu, number);
+    this.#menu.set(name, number);
   }
 
   #validateOnlyDrink() {

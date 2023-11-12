@@ -1,5 +1,5 @@
-import MESSAGE from './constants/message.js';
-import VALUE from './constants/value.js';
+import MESSAGE from '../constants/message.js';
+import VALUE from '../constants/value.js';
 
 const Gift = {
   calculateGift(total) {

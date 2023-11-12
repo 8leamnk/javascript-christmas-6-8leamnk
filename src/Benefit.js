@@ -10,7 +10,7 @@ class Benefit {
     this.#applyBenefit(date, menu, total, gift);
   }
 
-  calculateTotalBenefit() {
+  findOutTotalBenefit() {
     const total = [...this.#benefit.values()].reduce(
       (acc, amount) => acc + amount,
       0,
@@ -29,12 +29,6 @@ class Benefit {
     }
 
     return MESSAGE.none;
-  }
-
-  static calculatePayment(total, benefit, gift) {
-    const payment = total + benefit + gift;
-
-    return convertCurrencyUnit(payment);
   }
 
   #applyBenefit(date, menu, total, gift) {

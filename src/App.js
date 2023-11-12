@@ -3,6 +3,7 @@ import Menu from './Menu.js';
 import Total from './Total.js';
 import Gift from './Gift.js';
 import Benefit from './Benefit.js';
+import Payment from './Payment.js';
 import Badge from './Badge.js';
 import InputView from './View/InputView.js';
 import OutputView from './View/OutputView.js';
@@ -21,6 +22,7 @@ class App {
     const gift = App.#executeGift(total);
     const benefit = App.#executeBenefit(date, menu, total, gift);
 
+    App.#executePayment(total, benefit, gift);
     App.#executeBadge(benefit);
   }
 
@@ -68,15 +70,19 @@ class App {
 
   static #executeBenefit(date, menu, total, gift) {
     const benefitObject = new Benefit(date, menu, total, gift);
-    const { benefit, benefitString } = benefitObject.calculateTotalBenefit();
+    const { benefit, benefitString } = benefitObject.findOutTotalBenefit();
     const benefitDetail = benefitObject.findOutBenefitDetail();
-    const payment = Benefit.calculatePayment(total, benefit, gift);
 
     OutputView.printBenefitDetail(benefitDetail);
     OutputView.printBenefit(benefitString);
-    OutputView.printPayment(payment);
 
     return benefit;
+  }
+
+  static #executePayment(total, benefit, gift) {
+    const payment = Payment.calculatePayment(total, benefit, gift);
+
+    OutputView.printPayment(payment);
   }
 
   static #executeBadge(benefit) {

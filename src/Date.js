@@ -5,20 +5,17 @@ class Date {
   #date;
 
   constructor(dateInput) {
-    this.#date = Date.convertToNumber(dateInput);
+    this.#date = Number(dateInput);
     this.#validate();
   }
 
-  static convertToNumber(dateInput) {
-    return Number(dateInput);
-  }
-
-  findOutMonthAndDay() {
+  findOutDateInfo() {
+    const date = this.#date;
     const monthAndDay = `${VALUE.month}${VALUE.unit.month} ${this.#date}${
       VALUE.unit.date
     }`;
 
-    return monthAndDay;
+    return { date, monthAndDay };
   }
 
   #validate() {

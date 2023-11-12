@@ -26,10 +26,8 @@ class App {
     try {
       const dateInput = await InputView.readDate();
       const dateObject = new Date(dateInput);
-      const date = Date.convertToNumber(dateInput);
-      const monthAndDay = dateObject.findOutMonthAndDay();
 
-      return { date, monthAndDay };
+      return dateObject.findOutDateInfo();
     } catch (error) {
       OutputView.printError(error);
       return this.#executeDate();

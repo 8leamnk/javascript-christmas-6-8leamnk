@@ -1,27 +1,24 @@
-import Date from './Date.js';
-import Menu from './Menu.js';
-import Total from './Total.js';
-import Gift from './Gift.js';
-import Benefit from './Benefit.js';
-import Payment from './Payment.js';
-import Badge from './Badge.js';
+import Date from './Model/Date.js';
+import Menu from './Model/Menu.js';
+import Total from './Model/Total.js';
+import Gift from './Model/Gift.js';
+import Benefit from './Model/Benefit.js';
+import Payment from './Model/Payment.js';
+import Badge from './Model/Badge.js';
 import InputView from './View/InputView.js';
 import OutputView from './View/OutputView.js';
 
 class App {
   async run() {
     OutputView.printIntro();
-
     const { date, monthAndDay } = await this.#executeDate();
     const { menu, orderHistory } = await this.#executeMenu();
 
     OutputView.printPreview(monthAndDay);
     OutputView.printMenu(orderHistory);
-
     const total = App.#executeTotal(menu);
     const gift = App.#executeGift(total);
     const benefit = App.#executeBenefit(date, menu, total, gift);
-
     App.#executePayment(total, benefit, gift);
     App.#executeBadge(benefit);
   }

@@ -19,10 +19,10 @@ class Benefit {
   findOutBenefitDetail() {
     if (this.#benefit.size > 0) {
       const benefitDetail = [...this.#benefit].map(
-        ([type, amount]) => `${type}: ${convertCurrencyUnit(amount)}\n`,
+        ([type, amount]) => `${type}: ${convertCurrencyUnit(amount)}`,
       );
 
-      return benefitDetail.join('');
+      return benefitDetail.join(MESSAGE.newline);
     }
 
     return MESSAGE.none;

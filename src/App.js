@@ -25,9 +25,9 @@ class App {
   async #executeDate() {
     try {
       const dateInput = await InputView.readDate();
-      const date = Number(dateInput);
-      const dateObject = new Date(date);
-      const monthAndDay = dateObject.getMonthAndDay();
+      const dateObject = new Date(dateInput);
+      const date = Date.convertToNumber(dateInput);
+      const monthAndDay = dateObject.findOutMonthAndDay();
 
       return { date, monthAndDay };
     } catch (error) {

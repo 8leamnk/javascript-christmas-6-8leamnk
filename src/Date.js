@@ -4,12 +4,16 @@ import VALUE from './constants/value.js';
 class Date {
   #date;
 
-  constructor(date) {
-    this.#date = date;
+  constructor(dateInput) {
+    this.#date = Date.convertToNumber(dateInput);
     this.#validate();
   }
 
-  getMonthAndDay() {
+  static convertToNumber(dateInput) {
+    return Number(dateInput);
+  }
+
+  findOutMonthAndDay() {
     const monthAndDay = `${VALUE.month}${VALUE.unit.month} ${this.#date}${
       VALUE.unit.date
     }`;

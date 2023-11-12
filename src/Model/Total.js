@@ -1,5 +1,5 @@
-import getAllMenus from './utils/menuUtils.js';
-import convertCurrencyUnit from './utils/convertUtils.js';
+import getAllMenus from '../utils/menuUtils.js';
+import convertCurrencyUnit from '../utils/convertUtils.js';
 
 const Total = {
   calculateTotal(menu) {

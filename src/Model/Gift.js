@@ -3,11 +3,11 @@ import VALUE from '../constants/value.js';
 
 const Gift = {
   calculateGift(total) {
-    const type = VALUE.gift.detail.split(' ').at(0);
+    const giftType = VALUE.gift.detail.split(' ').at(0);
     let gift = 0;
 
     if (total >= VALUE.gift.condition) {
-      gift += VALUE.menu.drink.get(type);
+      gift += VALUE.menu.drink.get(giftType);
     }
 
     return gift;

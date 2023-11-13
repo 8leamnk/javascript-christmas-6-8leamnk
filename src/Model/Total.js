@@ -6,8 +6,8 @@ const Total = {
     const allMenus = getAllMenus();
     let total = 0;
 
-    menu.forEach((value, key) => {
-      total += allMenus.get(key) * value;
+    menu.forEach((number, name) => {
+      total += allMenus.get(name) * number;
     });
 
     return total;

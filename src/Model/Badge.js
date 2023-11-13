@@ -2,7 +2,7 @@ import MESSAGE from '../constants/message.js';
 import VALUE from '../constants/value.js';
 
 const Badge = {
-  getBadge(benefit) {
+  displayBadge(benefit) {
     const { badges } = VALUE;
 
     for (let i = 0; i < badges.length; i += 1) {

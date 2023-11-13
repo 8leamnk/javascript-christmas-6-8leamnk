@@ -83,7 +83,7 @@ class App {
   }
 
   static #executeBadge(benefit) {
-    const badge = Badge.getBadge(benefit);
+    const badge = Badge.displayBadge(benefit);
 
     OutputView.printBadge(badge);
   }

@@ -39,17 +39,27 @@ class Menu {
   }
 
   #validatePerMenu(nameAndNumber, allMenuNames) {
-    const [name, numberString] = nameAndNumber.split(VALUE.hyphen);
-    const number = Number(numberString);
+    const { name, number, length } = Menu.#findNeedValues(nameAndNumber);
 
-    Menu.#validateFormat(nameAndNumber);
+    Menu.#validateFormat(nameAndNumber, length);
     Menu.#validateNotExistMenu(name, allMenuNames);
     Menu.#validateNumberOfMenus(number);
     this.#validateDuplication(name, number);
   }
 
-  static #validateFormat(nameAndNumber) {
-    if (!VALUE.menu.format.test(nameAndNumber)) {
+  static #findNeedValues(nameAndNumber) {
+    const splitArray = nameAndNumber.split(VALUE.hyphen);
+    const [name, numberString] = splitArray;
+    const number = Number(numberString);
+
+    return { name, number, length: splitArray.length };
+  }
+
+  static #validateFormat(nameAndNumber, length) {
+    if (
+      !VALUE.menu.format.test(nameAndNumber) ||
+      length > VALUE.menu.range.arrayLengthPerMenu
+    ) {
       throw new Error(MESSAGE.error.menu);
     }
   }
@@ -61,7 +71,7 @@ class Menu {
   }
 
   static #validateNumberOfMenus(number) {
-    if (number < VALUE.menu.range.min) {
+    if (!number || number < VALUE.menu.range.min) {
       throw new Error(MESSAGE.error.menu);
     }
   }

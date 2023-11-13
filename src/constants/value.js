@@ -62,6 +62,10 @@ const VALUE = {
     sunday: 3,
     week: 7,
     christmasDay: 25,
+    range: {
+      min: 1,
+      max: 31,
+    },
   },
 
   unit: {

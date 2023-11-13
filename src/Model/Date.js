@@ -36,7 +36,10 @@ class Date {
   }
 
   #validateRange() {
-    if (this.#date < 1 || this.#date > 31) {
+    if (
+      this.#date < VALUE.date.range.min ||
+      this.#date > VALUE.date.range.max
+    ) {
       throw new Error(MESSAGE.error.date);
     }
   }

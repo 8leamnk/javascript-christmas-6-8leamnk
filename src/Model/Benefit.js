@@ -38,7 +38,6 @@ class Benefit {
   }
 
   #applyBenefit(date, menu, total, gift) {
-    // 총주문 금액 10,000원 이상부터 이벤트가 적용 된다.
     if (total >= VALUE.discount.condition) {
       this.#applyDDayDiscount(date);
       this.#applySpecialDiscount(date);

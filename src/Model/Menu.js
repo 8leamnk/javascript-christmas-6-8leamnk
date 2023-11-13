@@ -76,8 +76,8 @@ class Menu {
 
   #validateOnlyDrink() {
     const drinks = [...VALUE.menu.drink.keys()];
-    const isOnlyDrink = [...this.#menu.keys()].every((menu) =>
-      drinks.includes(menu),
+    const isOnlyDrink = [...this.#menu.keys()].every((name) =>
+      drinks.includes(name),
     );
 
     if (isOnlyDrink) {

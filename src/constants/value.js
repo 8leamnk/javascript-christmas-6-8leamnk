@@ -23,7 +23,7 @@ const VALUE = {
     format: /([가-힣]+[-]{1}[0-9]+)/,
     range: {
       min: 1,
-      max: 19,
+      max: 20,
     },
   },
 

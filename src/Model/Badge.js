@@ -1,4 +1,3 @@
-import MESSAGE from '../constants/message.js';
 import VALUE from '../constants/value.js';
 
 const Badge = {
@@ -13,7 +12,7 @@ const Badge = {
       }
     }
 
-    return MESSAGE.none;
+    return VALUE.none;
   },
 };
 

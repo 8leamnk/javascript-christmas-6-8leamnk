@@ -1,9 +1,8 @@
-import getAllMenus from '../utils/menuUtils.js';
-import convertCurrencyUnit from '../utils/convertUtils.js';
+import Util from '../Util/Util.js';
 
 const Total = {
   calculateTotal(menu) {
-    const allMenus = getAllMenus();
+    const allMenus = Util.getAllMenus();
     let total = 0;
 
     menu.forEach((number, name) => {
@@ -14,7 +13,7 @@ const Total = {
   },
 
   displayTotal(total) {
-    return convertCurrencyUnit(total);
+    return Util.convertCurrencyUnit(total);
   },
 };
 

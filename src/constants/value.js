@@ -76,6 +76,10 @@ const VALUE = {
     won: '원',
   },
 
+  none: '없음',
+
+  newline: '\n',
+
   hyphen: '-',
 
   comma: ',',

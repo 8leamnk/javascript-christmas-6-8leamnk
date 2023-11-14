@@ -1,4 +1,4 @@
-import getAllMenus from '../utils/menuUtils.js';
+import Util from '../Util/Util.js';
 import MESSAGE from '../constants/message.js';
 import VALUE from '../constants/value.js';
 
@@ -20,13 +20,13 @@ class Menu {
   #findOutOrderHistory() {
     const orderHistory = [...this.#menu]
       .map(([name, number]) => `${name} ${number}${VALUE.unit.number}`)
-      .join(MESSAGE.newline);
+      .join(VALUE.newline);
 
     return orderHistory;
   }
 
   #validate(input) {
-    const allMenuNames = [...getAllMenus().keys()];
+    const allMenuNames = [...Util.getAllMenus().keys()];
 
     input.split(VALUE.comma).forEach((string) => {
       const nameAndNumber = string.trim();

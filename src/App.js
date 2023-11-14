@@ -7,15 +7,16 @@ import Payment from './Model/Payment.js';
 import Badge from './Model/Badge.js';
 import InputView from './View/InputView.js';
 import OutputView from './View/OutputView.js';
+import MESSAGE from './constants/message.js';
 
 class App {
   async run() {
-    OutputView.printIntro();
-    const { date, monthAndDay } = await this.#executeDate();
+    OutputView.printOne(MESSAGE.output.intro, false);
+    const { date, previewNotice } = await this.#executeDate();
     const { menu, orderHistory } = await this.#executeMenu();
 
-    OutputView.printPreview(monthAndDay);
-    OutputView.printMenu(orderHistory);
+    OutputView.printOne(previewNotice);
+    OutputView.printMultiple([MESSAGE.output.menu, orderHistory]);
     const total = App.#executeTotal(menu);
     const gift = App.#executeGift(total);
     const benefit = App.#executeBenefit(date, menu, total, gift);
@@ -51,7 +52,7 @@ class App {
     const total = Total.calculateTotal(menu);
     const totalString = Total.displayTotal(total);
 
-    OutputView.printTotal(totalString);
+    OutputView.printMultiple([MESSAGE.output.total, totalString]);
 
     return total;
   }
@@ -60,7 +61,7 @@ class App {
     const gift = Gift.calculateGift(total);
     const giftDetail = Gift.findOutGiftDetail(gift);
 
-    OutputView.printGift(giftDetail);
+    OutputView.printMultiple([MESSAGE.output.gift, giftDetail]);
 
     return gift;
   }
@@ -70,8 +71,8 @@ class App {
     const { benefit, benefitString } = benefitObject.findOutTotalBenefitInfo();
     const benefitDetail = benefitObject.findOutBenefitDetail();
 
-    OutputView.printBenefitDetail(benefitDetail);
-    OutputView.printBenefit(benefitString);
+    OutputView.printMultiple([MESSAGE.output.benefitDetail, benefitDetail]);
+    OutputView.printMultiple([MESSAGE.output.benefit, benefitString]);
 
     return benefit;
   }
@@ -79,13 +80,13 @@ class App {
   static #executePayment(total, benefit, gift) {
     const payment = Payment.calculatePayment(total, benefit, gift);
 
-    OutputView.printPayment(payment);
+    OutputView.printMultiple([MESSAGE.output.payment, payment]);
   }
 
   static #executeBadge(benefit) {
     const badge = Badge.displayBadge(benefit);
 
-    OutputView.printBadge(badge);
+    OutputView.printMultiple([MESSAGE.output.badge, badge], false);
   }
 }
 

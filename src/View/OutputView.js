@@ -1,53 +1,33 @@
 import { Console } from '@woowacourse/mission-utils';
-import MESSAGE from '../constants/message.js';
 import VALUE from '../constants/value.js';
 
 const OutputView = {
+  printOne(message, needNewline = true) {
+    let output = message;
+
+    if (needNewline) {
+      output = `${message}${VALUE.newline}`;
+    }
+
+    Console.print(output);
+  },
+
+  printMultiple(messages, needNewline = true) {
+    const lastIndex = messages.length - 1;
+
+    messages.forEach((message, index) => {
+      let output = message;
+
+      if (needNewline && index === lastIndex) {
+        output = `${message}${VALUE.newline}`;
+      }
+
+      Console.print(output);
+    });
+  },
+
   printError(error) {
     Console.print(error.message);
-  },
-
-  printIntro() {
-    Console.print(MESSAGE.output.intro);
-  },
-
-  printPreview(monthAndDay) {
-    Console.print(`${monthAndDay}${MESSAGE.output.preview}${VALUE.newline}`);
-  },
-
-  printMenu(orderHistory) {
-    Console.print(MESSAGE.output.menu);
-    Console.print(`${orderHistory}${VALUE.newline}`);
-  },
-
-  printTotal(total) {
-    Console.print(MESSAGE.output.total);
-    Console.print(`${total}${VALUE.newline}`);
-  },
-
-  printGift(gift) {
-    Console.print(MESSAGE.output.gift);
-    Console.print(`${gift}${VALUE.newline}`);
-  },
-
-  printBenefitDetail(benefitDetail) {
-    Console.print(MESSAGE.output.benefitDetail);
-    Console.print(`${benefitDetail}${VALUE.newline}`);
-  },
-
-  printBenefit(benefit) {
-    Console.print(MESSAGE.output.benefit);
-    Console.print(`${benefit}${VALUE.newline}`);
-  },
-
-  printPayment(payment) {
-    Console.print(MESSAGE.output.payment);
-    Console.print(`${payment}${VALUE.newline}`);
-  },
-
-  printBadge(badge) {
-    Console.print(MESSAGE.output.badge);
-    Console.print(badge);
   },
 };
 

@@ -11,17 +11,17 @@ class Date {
 
   findOutDateInfo() {
     const date = this.#date;
-    const monthAndDay = this.#findOutMonthAndDay();
+    const previewNotice = this.#findOutPreviewNotice();
 
-    return { date, monthAndDay };
+    return { date, previewNotice };
   }
 
-  #findOutMonthAndDay() {
-    const monthAndDay = `${VALUE.month}${VALUE.unit.month} ${this.#date}${
+  #findOutPreviewNotice() {
+    const previewNotice = `${VALUE.month}${VALUE.unit.month} ${this.#date}${
       VALUE.unit.date
-    }`;
+    }${MESSAGE.output.preview}`;
 
-    return monthAndDay;
+    return previewNotice;
   }
 
   #validate() {

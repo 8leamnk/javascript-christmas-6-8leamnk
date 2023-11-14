@@ -26,7 +26,7 @@ class App {
 
   async #executeDate() {
     try {
-      const dateInput = await InputView.readDate();
+      const dateInput = await InputView.readInput(MESSAGE.input.date);
       const dateObject = new Date(dateInput);
 
       return dateObject.findOutDateInfo();
@@ -38,7 +38,7 @@ class App {
 
   async #executeMenu() {
     try {
-      const menuInput = await InputView.readMenu();
+      const menuInput = await InputView.readInput(MESSAGE.input.menu);
       const menuObject = new Menu(menuInput);
 
       return menuObject.findOutMenuInfo();

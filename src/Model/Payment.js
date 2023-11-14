@@ -1,10 +1,10 @@
-import convertCurrencyUnit from '../utils/convertUtils.js';
+import Util from '../Util/Util.js';
 
 const Payment = {
   calculatePayment(total, benefit, gift) {
     const payment = total + benefit + gift;
 
-    return convertCurrencyUnit(payment);
+    return Util.convertCurrencyUnit(payment);
   },
 };
 

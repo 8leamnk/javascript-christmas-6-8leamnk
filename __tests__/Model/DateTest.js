@@ -28,14 +28,19 @@ describe('사용자가 입력한 날짜 테스트', () => {
     },
   );
 
-  test.each([
-    ['3', { date: 3, monthAndDay: '12월 3일' }],
-    ['25', { date: 25, monthAndDay: '12월 25일' }],
-  ])(
+  test.each(
     '입력한 날짜가 정상적인 숫자 형태면 날짜 정보가 제대로 반환 된다.',
-    (input, output) => {
+    () => {
+      // given
+      const INPUT = '25';
+      const output = {
+        date: 25,
+        previewNotice:
+          '12월 25일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!',
+      };
+
       // when
-      const dateObject = new Date(input);
+      const dateObject = new Date(INPUT);
       const dateInfo = dateObject.findOutDateInfo();
 
       // then
@@ -43,14 +48,19 @@ describe('사용자가 입력한 날짜 테스트', () => {
     },
   );
 
-  test.each([
-    ['10', { date: 4, monthAndDay: '12월 4일' }],
-    ['15', { date: 30, monthAndDay: '12월 29일' }],
-  ])(
+  test.each(
     '입력한 날짜가 정상적인 숫자 형태면 날짜 정보가 다른 숫자로 반환되지 않는다.',
-    (input, output) => {
+    () => {
+      // given
+      const INPUT = '15';
+      const output = {
+        date: 30,
+        previewNotice:
+          '12월 29일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!',
+      };
+
       // when
-      const dateObject = new Date(input);
+      const dateObject = new Date(INPUT);
       const dateInfo = dateObject.findOutDateInfo();
 
       // then

@@ -1,5 +1,4 @@
-import convertCurrencyUnit from '../utils/convertUtils.js';
-import MESSAGE from '../constants/message.js';
+import Util from '../Util/Util.js';
 import VALUE from '../constants/value.js';
 
 class Benefit {
@@ -13,19 +12,19 @@ class Benefit {
   findOutTotalBenefitInfo() {
     const total = this.#calculateTotalBenefit();
 
-    return { benefit: total, benefitString: convertCurrencyUnit(total) };
+    return { benefit: total, benefitString: Util.convertCurrencyUnit(total) };
   }
 
   findOutBenefitDetail() {
     if (this.#benefit.size > 0) {
       const benefitDetail = [...this.#benefit].map(
-        ([type, amount]) => `${type}: ${convertCurrencyUnit(amount)}`,
+        ([type, amount]) => `${type}: ${Util.convertCurrencyUnit(amount)}`,
       );
 
-      return benefitDetail.join(MESSAGE.newline);
+      return benefitDetail.join(VALUE.newline);
     }
 
-    return MESSAGE.none;
+    return VALUE.none;
   }
 
   #calculateTotalBenefit() {

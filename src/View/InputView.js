@@ -1,10 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 import MESSAGE from '../constants/message.js';
+import VALUE from '../constants/value.js';
 
 const InputView = {
   async readDate() {
     const input = await Console.readLineAsync(
-      `${MESSAGE.input.date}${MESSAGE.newline}`,
+      `${MESSAGE.input.date}${VALUE.newline}`,
     );
 
     return input;
@@ -12,7 +13,7 @@ const InputView = {
 
   async readMenu() {
     const input = await Console.readLineAsync(
-      `${MESSAGE.input.menu}${MESSAGE.newline}`,
+      `${MESSAGE.input.menu}${VALUE.newline}`,
     );
 
     return input;

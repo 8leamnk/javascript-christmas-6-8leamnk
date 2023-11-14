@@ -1,4 +1,3 @@
-import MESSAGE from '../constants/message.js';
 import VALUE from '../constants/value.js';
 
 const Gift = {
@@ -18,7 +17,7 @@ const Gift = {
       return VALUE.gift.detail;
     }
 
-    return MESSAGE.none;
+    return VALUE.none;
   },
 };
 

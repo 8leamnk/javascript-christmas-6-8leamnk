@@ -43,6 +43,12 @@ const VALUE = Object.freeze({
     won: '원',
     language: 'ko-KR',
   },
+
+  badge: [
+    ['산타', 20000],
+    ['트리', 10000],
+    ['별', 5000],
+  ],
 });
 
 export default VALUE;

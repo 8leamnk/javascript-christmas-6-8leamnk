@@ -45,6 +45,7 @@ class App {
     const benefitInfo = new Benefit(date, orderMenu, total, gift);
     const { benefitContent, benefitTotal } = benefitInfo;
     const payment = EventResult.calculatePayment(total, benefitTotal, gift);
+    const badge = EventResult.calculatePayment(benefitTotal);
   }
 }
 

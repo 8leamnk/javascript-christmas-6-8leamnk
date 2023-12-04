@@ -44,7 +44,9 @@ class Benefit {
       }
     });
 
-    this.#benefit.set(type, discount * -1);
+    if (discount > 0) {
+      this.#benefit.set(type, discount * -1);
+    }
   }
 
   #applySpecailEvent(date) {

@@ -31,7 +31,7 @@ class Order {
   }
 
   static #validateFormat(answer) {
-    const NOT_FORMAT = /[^가-힣|-|0-9|,]/;
+    const NOT_FORMAT = /[^가-힣|\-|0-9|,]/;
 
     if (NOT_FORMAT.test(answer)) {
       throw new Error(MESSAGE.error.order);

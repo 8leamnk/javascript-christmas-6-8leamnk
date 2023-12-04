@@ -1,4 +1,4 @@
-const VALUE = {
+const VALUE = Object.freeze({
   appetizer: new Map([
     ['양송이수프', 6000],
     ['타파스', 5500],
@@ -24,6 +24,6 @@ const VALUE = {
   ]),
 
   none: '없음',
-};
+});
 
 export default VALUE;

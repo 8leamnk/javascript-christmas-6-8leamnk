@@ -14,4 +14,17 @@ describe('이벤트 결과 클래스 테스트', () => {
     // then
     expect(payment).toBe(OUTPUT);
   });
+
+  test.each([
+    [-20000, '산타'],
+    [-10000, '트리'],
+    [-5000, '별'],
+    [-1000, '없음'],
+  ])('총혜택 금액에 따라 다른 이벤트 배지를 부여한다.', (input, output) => {
+    // when
+    const badge = EventResult.applyBadge(input);
+
+    // then
+    expect(badge).toBe(output);
+  });
 });

@@ -24,4 +24,25 @@ describe('혜택 내역 클래스 테스트', () => {
     expect(benefitContent).toEqual(OUTPUT);
     expect(benefitTotal).toBe(OUTPUT_TOTAL);
   });
+
+  test('총주문 금액이 10000원 미만이면 혜택이 없다.', () => {
+    // given
+    const DATE = 3;
+    const MENU = new Map([
+      ['아이스크림', 1],
+      ['제로콜라', 1],
+    ]);
+    const TOTAL = 8000;
+    const GIFT = 0;
+    const OUTPUT = '없음';
+    const OUTPUT_TOTAL = 0;
+
+    // when
+    const benefitInfo = new Benefit(DATE, MENU, TOTAL, GIFT);
+    const { benefitContent, benefitTotal } = benefitInfo.getBenefitInfo();
+
+    // then
+    expect(benefitContent).toEqual(OUTPUT);
+    expect(benefitTotal).toBe(OUTPUT_TOTAL);
+  });
 });

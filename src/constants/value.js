@@ -24,6 +24,15 @@ const VALUE = Object.freeze({
   ]),
 
   none: '없음',
+
+  gift: {
+    content: [['샴페인', 1]],
+    condition: 120000,
+  },
+
+  unit: {
+    number: '개',
+  },
 });
 
 export default VALUE;

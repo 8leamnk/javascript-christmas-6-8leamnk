@@ -1,4 +1,5 @@
 import Date from './domain/Date.js';
+import Gift from './domain/Gift.js';
 import Order from './domain/Order.js';
 import Total from './domain/Total.js';
 import InputView from './view/InputView.js';
@@ -33,6 +34,10 @@ class App {
       OutputView.printError(error);
       return this.#executeOrder();
     }
+  }
+
+  #applyEvent(total) {
+    const { gift, giftContent } = new Gift(total).getGiftInfo();
   }
 }
 

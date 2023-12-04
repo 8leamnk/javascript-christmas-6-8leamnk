@@ -1,8 +1,9 @@
-import Benefit from './domain/Benefit.js';
 import Date from './domain/Date.js';
-import Gift from './domain/Gift.js';
 import Order from './domain/Order.js';
 import Total from './domain/Total.js';
+import Gift from './domain/Gift.js';
+import Benefit from './domain/Benefit.js';
+import EventResult from './domain/EventResult.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView';
 
@@ -11,6 +12,8 @@ class App {
     const date = await this.#executeDate();
     const orderMenu = await this.#executeOrder();
     const total = new Total(orderMenu).getTotal();
+
+    App.#applyEvent(date, orderMenu, total);
   }
 
   async #executeDate() {
@@ -37,10 +40,11 @@ class App {
     }
   }
 
-  #applyEvent(date, orderMenu, total) {
+  static #applyEvent(date, orderMenu, total) {
     const { gift, giftContent } = new Gift(total).getGiftInfo();
     const benefitInfo = new Benefit(date, orderMenu, total, gift);
     const { benefitContent, benefitTotal } = benefitInfo;
+    const payment = EventResult.calculatePayment(total, benefitTotal, gift);
   }
 }
 

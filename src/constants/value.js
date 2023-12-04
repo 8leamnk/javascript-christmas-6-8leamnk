@@ -38,10 +38,16 @@ const VALUE = Object.freeze({
     gift: '증정 이벤트',
   },
 
+  month: {
+    December: '12',
+  },
+
   unit: {
     number: '개',
     won: '원',
     language: 'ko-KR',
+    month: '월',
+    day: '일',
   },
 
   badge: [

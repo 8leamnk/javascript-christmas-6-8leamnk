@@ -38,6 +38,11 @@ const VALUE = Object.freeze({
     gift: '증정 이벤트',
   },
 
+  dayRange: {
+    start: 1,
+    end: 31,
+  },
+
   month: {
     December: '12',
   },

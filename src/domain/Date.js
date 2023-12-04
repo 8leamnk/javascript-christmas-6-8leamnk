@@ -1,5 +1,6 @@
 import Util from '../util/Util.js';
 import MESSAGE from '../constants/message.js';
+import VALUE from '../constants/value.js';
 
 class Date {
   #date;
@@ -15,7 +16,9 @@ class Date {
   }
 
   #validateRange() {
-    if (this.#date < 1 || this.#date > 31) {
+    const { start, end } = VALUE.dayRange;
+
+    if (this.#date < start || this.#date > end) {
       throw new Error(MESSAGE.error.date);
     }
   }

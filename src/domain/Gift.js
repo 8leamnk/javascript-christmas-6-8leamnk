@@ -15,7 +15,7 @@ class Gift {
     const allMenus = Util.getAllMenus();
 
     if (total >= condition) {
-      content.forEach((type, number) => {
+      content.forEach(([type, number]) => {
         this.#gift = allMenus.get(type) * number;
         this.#giftContents.push(`${type} ${number}${VALUE.unit.number}`);
       });

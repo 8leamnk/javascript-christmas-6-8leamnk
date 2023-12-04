@@ -6,7 +6,7 @@ class Order {
   #orderMenu = new Map();
 
   constructor(answer) {
-    this.#validate(answer);
+    this.#validate(answer.trim());
   }
 
   #validate(answer) {

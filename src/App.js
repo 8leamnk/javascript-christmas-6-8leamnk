@@ -5,7 +5,7 @@ import Gift from './domain/Gift.js';
 import Benefit from './domain/Benefit.js';
 import EventResult from './domain/EventResult.js';
 import InputView from './view/InputView.js';
-import OutputView from './view/OutputView';
+import OutputView from './view/OutputView.js';
 
 class App {
   constructor() {

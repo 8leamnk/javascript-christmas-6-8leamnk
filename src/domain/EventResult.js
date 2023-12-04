@@ -9,7 +9,7 @@ const EventResult = {
     for (let index = 0; index < VALUE.badge.length; index += 1) {
       const [type, amount] = VALUE.badge[index];
 
-      if (benefitTotal >= amount) {
+      if (benefitTotal * -1 >= amount) {
         return type;
       }
     }

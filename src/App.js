@@ -1,5 +1,6 @@
 import Date from './domain/Date.js';
 import Order from './domain/Order.js';
+import Total from './domain/Total.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView';
 
@@ -7,6 +8,7 @@ class App {
   async run() {
     const date = await this.#executeDate();
     const orderMenu = await this.#executeOrder();
+    const total = new Total(orderMenu).getTotal();
   }
 
   async #executeDate() {

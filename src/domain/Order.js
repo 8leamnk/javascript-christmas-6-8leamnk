@@ -9,12 +9,6 @@ class Order {
     this.#validate(answer);
   }
 
-  static #getAllMenus() {
-    const { appetizer, main, dessert, drink } = VALUE;
-
-    return new Map([...appetizer, ...main, ...dessert, ...drink]);
-  }
-
   #validate(answer) {
     Order.#validateFormat(answer);
 
@@ -45,7 +39,7 @@ class Order {
   }
 
   static #validateMenu(name) {
-    const allMenus = Order.#getAllMenus();
+    const allMenus = Util.getAllMenus();
 
     if (!allMenus.has(name)) {
       throw new Error(MESSAGE.error.order);

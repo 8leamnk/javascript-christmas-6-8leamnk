@@ -16,10 +16,15 @@ const MESSAGE = {
     payment: '<할인 후 예상 결제 금액>',
     badge: '<12월 이벤트 배지>',
   },
+
+  error: {
+    date: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
+  },
 };
 
 Object.freeze(MESSAGE.input);
 Object.freeze(MESSAGE.output);
+Object.freeze(MESSAGE.error);
 Object.freeze(MESSAGE);
 
 export default MESSAGE;

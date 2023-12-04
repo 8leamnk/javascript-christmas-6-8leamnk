@@ -14,6 +14,12 @@ const Util = {
 
     return new Map([...appetizer, ...main, ...dessert, ...drink]);
   },
+
+  displayCurrency(amount) {
+    const { language, won } = VALUE.unit;
+
+    return `${amount.toLocaleString(language)}${won}`;
+  },
 };
 
 export default Util;

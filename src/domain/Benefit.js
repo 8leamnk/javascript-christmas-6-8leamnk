@@ -1,3 +1,4 @@
+import Util from '../util/Util.js';
 import VALUE from '../constants/value.js';
 
 class Benefit {
@@ -20,15 +21,17 @@ class Benefit {
     if (date <= 25) {
       const discount = 1000 + (date - 1) * 100;
 
-      this.#benefit.set('크리스마스 디데이 할인', discount * -1);
+      this.#benefit.set(VALUE.eventType.dday, discount * -1);
     }
   }
 
   #applyWeekEvent(date, orderMenu) {
+    const { weekday, weekend } = VALUE.eventType;
+
     if (date % 7 === 1 || date % 7 === 2) {
-      this.#getWeekDiscount(orderMenu, VALUE.main, '주말 할인');
+      this.#getWeekDiscount(orderMenu, VALUE.main, weekend);
     } else {
-      this.#getWeekDiscount(orderMenu, VALUE.dessert, '평일 할인');
+      this.#getWeekDiscount(orderMenu, VALUE.dessert, weekday);
     }
   }
 
@@ -46,25 +49,31 @@ class Benefit {
 
   #applySpecailEvent(date) {
     if (date % 7 === 3 || date === 25) {
-      this.#benefit.set('특별 할인', 1000 * -1);
+      this.#benefit.set(VALUE.eventType.special, 1000 * -1);
     }
   }
 
   #applyGift(gift) {
     if (gift > 0) {
-      this.#benefit.set('증정 이벤트', gift * -1);
+      this.#benefit.set(VALUE.eventType.gift, gift * -1);
     }
   }
 
-  getBenefit() {
+  #getBenefitContent() {
     if (this.#benefit.size > 0) {
-      return this.#benefit;
+      const benefit = [];
+
+      this.#benefit.forEach((discount, type) => {
+        benefit.push(`${type}: ${Util.displayCurrency(discount)}`);
+      });
+
+      return benefit.join('\n');
     }
 
     return VALUE.none;
   }
 
-  getBenefitTotal() {
+  #getBenefitTotal() {
     if (this.#benefit.size > 0) {
       let sum = 0;
 
@@ -76,6 +85,13 @@ class Benefit {
     }
 
     return 0;
+  }
+
+  getBenefitInfo() {
+    const benefitContent = this.#getBenefitContent();
+    const benefitTotal = this.#getBenefitTotal();
+
+    return { benefitContent, benefitTotal };
   }
 }
 

@@ -30,8 +30,18 @@ const VALUE = Object.freeze({
     condition: 120000,
   },
 
+  eventType: {
+    dday: '크리스마스 디데이 할인',
+    weekend: '주말 할인',
+    weekday: '평일 할인',
+    special: '특별 할인',
+    gift: '증정 이벤트',
+  },
+
   unit: {
     number: '개',
+    won: '원',
+    language: 'ko-KR',
   },
 });
 

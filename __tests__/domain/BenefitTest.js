@@ -12,21 +12,16 @@ describe('혜택 내역 클래스 테스트', () => {
     ]);
     const TOTAL = 142000;
     const GIFT = 25000;
-    const OUTPUT = new Map([
-      ['크리스마스 디데이 할인', -1200],
-      ['평일 할인', -4046],
-      ['특별 할인', -1000],
-      ['증정 이벤트', -25000],
-    ]);
+    const OUTPUT =
+      '크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원';
     const OUTPUT_TOTAL = -31246;
 
     // when
     const benefitInfo = new Benefit(DATE, MENU, TOTAL, GIFT);
-    const benefit = benefitInfo.getBenefit();
-    const benefitTotal = benefitInfo.getBenefitTotal();
+    const { benefitContent, benefitTotal } = benefitInfo.getBenefitInfo();
 
     // then
-    expect(benefit).toEqual(OUTPUT);
+    expect(benefitContent).toEqual(OUTPUT);
     expect(benefitTotal).toBe(OUTPUT_TOTAL);
   });
 });

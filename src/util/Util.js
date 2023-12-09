@@ -16,6 +16,10 @@ const Util = {
 
     return allMenus;
   },
+
+  convertToCurrency(number) {
+    return number.toLocaleString('ko-KR');
+  },
 };
 
 export default Util;

@@ -13,7 +13,7 @@ const Result = {
     for (let index = 0; index < this.BADGE.length; index += 1) {
       const [badge, amount] = this.BADGE[index];
 
-      if (totalBenefit >= amount) {
+      if (totalBenefit * -1 >= amount) {
         return badge;
       }
     }

@@ -1,7 +1,7 @@
 import Util from '../util/Util.js';
 
 class Total {
-  #total;
+  #total = 0;
 
   constructor(orderMenu) {
     this.#calculateTotal(orderMenu);

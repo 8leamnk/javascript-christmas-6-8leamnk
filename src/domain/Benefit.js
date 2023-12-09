@@ -123,6 +123,13 @@ class Benefit {
 
     return total;
   }
+
+  getDiscount() {
+    const giftKey = Benefit.#EVENT_KEY.gift;
+    const gift = this.#benefitDetails.get(giftKey) || 0;
+
+    return this.getTotalBenefit() - gift;
+  }
 }
 
 export default Benefit;

@@ -1,13 +1,18 @@
 import { Console } from '@woowacourse/mission-utils';
+import MESSAGE from '../constants/message';
 
 const InputView = {
   async readDate() {
-    const input = await Console.readLineAsync(
-      '12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)',
-    );
-    // ...
+    const answer = await Console.readLineAsync(MESSAGE.input.date);
+
+    return answer;
   },
-  // ...
+
+  async readMenu() {
+    const answer = await Console.readLineAsync(MESSAGE.input.menu);
+
+    return answer;
+  },
 };
 
 export default InputView;

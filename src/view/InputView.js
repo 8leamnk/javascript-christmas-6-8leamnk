@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import Date from '../domain/Date.js';
+import Menu from '../domain/Menu.js';
 import OutputView from './OutputView.js';
 import MESSAGE from '../constants/message.js';
 
@@ -19,8 +20,9 @@ const InputView = {
   async readMenu() {
     try {
       const answer = await Console.readLineAsync(MESSAGE.input.menu);
+      const menu = new Menu(answer).getOrderMenu();
 
-      return answer;
+      return menu;
     } catch (error) {
       OutputView.printError(error);
       return this.readMenu();

@@ -1,3 +1,4 @@
+import Util from '../util/Util.js';
 import VALUE from '../constants/value.js';
 
 class Benefit {
@@ -91,19 +92,12 @@ class Benefit {
     }
   }
 
-  static #getAllMenus() {
-    const { appetizer, main, dessert, beverage } = VALUE;
-    const allMenus = new Map([...appetizer, ...main, ...dessert, ...beverage]);
-
-    return allMenus;
-  }
-
   #applyGift(total) {
     if (total >= Benefit.#CONDITION.gift) {
       let discount = 0;
 
       Benefit.#STANDARD.gift.forEach((number, type) => {
-        discount += Benefit.#getAllMenus().get(type) * number;
+        discount += Util.getAllMenus().get(type) * number;
       });
 
       this.#benefitDetails.set(Benefit.#EVENT_KEY.gift, discount * -1);

@@ -109,6 +109,10 @@ class Benefit {
       this.#benefitDetails.set(Benefit.#EVENT_KEY.gift, discount * -1);
     }
   }
+
+  getBenefitDetails() {
+    return this.#benefitDetails;
+  }
 }
 
 export default Benefit;

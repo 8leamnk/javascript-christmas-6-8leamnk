@@ -107,6 +107,10 @@ class Benefit {
   getBenefitDetails() {
     return this.#benefitDetails;
   }
+
+  static getGift() {
+    return Benefit.#STANDARD.gift;
+  }
 }
 
 export default Benefit;

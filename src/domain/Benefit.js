@@ -32,6 +32,8 @@ class Benefit {
 
   #benefitDetails = new Map();
 
+  #gift = new Map();
+
   constructor(date, orderManu, total) {
     this.#applyBenefits(date, orderManu, total);
   }
@@ -98,6 +100,7 @@ class Benefit {
 
       Benefit.#STANDARD.gift.forEach((number, type) => {
         discount += Util.getAllMenus().get(type) * number;
+        this.#gift.set(type, number);
       });
 
       this.#benefitDetails.set(Benefit.#EVENT_KEY.gift, discount * -1);
@@ -108,8 +111,17 @@ class Benefit {
     return this.#benefitDetails;
   }
 
-  static getGift() {
-    return Benefit.#STANDARD.gift;
+  getGift() {
+    return this.#gift;
+  }
+
+  getTotalBenefit() {
+    const total = [...this.#benefitDetails.values()].reduce(
+      (sum, discount) => sum + (discount || 0),
+      0,
+    );
+
+    return total;
   }
 }
 

@@ -46,7 +46,7 @@ class Menu {
   }
 
   static #validateRange(number) {
-    if (number < Menu.#FORMAT.number) {
+    if (!number || number < Menu.#FORMAT.number) {
       throw new Error(MESSAGE.error.menu);
     }
   }

@@ -11,21 +11,28 @@ describe('혜택 내역 테스트', () => {
       ['제로콜라', 1],
     ]);
     const TOTAL = 142000;
-    const OUTPUT = new Map([
+    const BENEFIT_DETAILS = new Map([
       ['크리스마스 디데이 할인', -1200],
       ['평일 할인', -4046],
       ['특별 할인', -1000],
       ['증정 이벤트', -25000],
     ]);
+    const GIFT = new Map([['샴페인', 1]]);
+    const TOTAL_BENEFIT = -31246;
 
     // when
-    const benefitDetails = new Benefit(DATE, MENU, TOTAL).getBenefitDetails();
+    const benefit = new Benefit(DATE, MENU, TOTAL);
+    const benefitDetails = benefit.getBenefitDetails();
+    const gift = benefit.getGift();
+    const totalBenefit = benefit.getTotalBenefit();
 
     // then
-    expect(benefitDetails).toEqual(OUTPUT);
+    expect(benefitDetails).toEqual(BENEFIT_DETAILS);
+    expect(gift).toEqual(GIFT);
+    expect(totalBenefit).toBe(TOTAL_BENEFIT);
   });
 
-  test('혜택 내역이 적용되지 않는지 테스트', () => {
+  test('각 이벤트가 적용되지 않는지 테스트', () => {
     // given
     const DATE = 26;
     const MENU = new Map([
@@ -33,12 +40,19 @@ describe('혜택 내역 테스트', () => {
       ['제로콜라', 1],
     ]);
     const TOTAL = 8500;
-    const OUTPUT = new Map();
+    const BENEFIT_DETAILS = new Map();
+    const GIFT = new Map();
+    const TOTAL_BENEFIT = 0;
 
     // when
-    const benefitDetails = new Benefit(DATE, MENU, TOTAL).getBenefitDetails();
+    const benefit = new Benefit(DATE, MENU, TOTAL);
+    const benefitDetails = benefit.getBenefitDetails();
+    const gift = benefit.getGift();
+    const totalBenefit = benefit.getTotalBenefit();
 
     // then
-    expect(benefitDetails).toEqual(OUTPUT);
+    expect(benefitDetails).toEqual(BENEFIT_DETAILS);
+    expect(gift).toEqual(GIFT);
+    expect(totalBenefit).toBe(TOTAL_BENEFIT);
   });
 });

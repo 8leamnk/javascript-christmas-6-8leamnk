@@ -4,7 +4,7 @@ import VALUE from '../constants/value.js';
 class Benefit {
   static #CONDITION = {
     applyEvent: 10000,
-    weekday: [0, 3, 4, 5, 6],
+    weekend: [1, 2],
     special: 3,
     gift: 120000,
   };
@@ -58,26 +58,27 @@ class Benefit {
 
   #applyWeek(date, orderManu) {
     const rest = date % Benefit.#DAY.week;
+    const { weekday, weekend } = Benefit.#EVENT_KEY;
 
-    if (Benefit.#CONDITION.weekday.includes(rest)) {
-      const discount = Benefit.#getWeekDiscount(orderManu, VALUE.dessert);
-      this.#benefitDetails.set(Benefit.#EVENT_KEY.weekday, discount * -1);
+    if (Benefit.#CONDITION.weekend.includes(rest)) {
+      this.#getWeekDiscount(orderManu, VALUE.main, weekend);
     } else {
-      const discount = Benefit.#getWeekDiscount(orderManu, VALUE.main);
-      this.#benefitDetails.set(Benefit.#EVENT_KEY.weekend, discount * -1);
+      this.#getWeekDiscount(orderManu, VALUE.dessert, weekday);
     }
   }
 
-  static #getWeekDiscount(orderManu, menu) {
+  #getWeekDiscount(orderManu, menuType, eventType) {
     let count = 0;
 
-    orderManu.forEach((number, type) => {
-      if (menu.has(type)) {
+    orderManu.forEach((number, menu) => {
+      if (menuType.has(menu)) {
         count += number;
       }
     });
 
-    return count * Benefit.#STANDARD.week;
+    if (count > 0) {
+      this.#benefitDetails.set(eventType, count * Benefit.#STANDARD.week * -1);
+    }
   }
 
   #applySpecial(date) {
